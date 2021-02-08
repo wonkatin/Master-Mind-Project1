@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #bdeaff;
+}
+h1 {
+    color: purple
+}
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    width: 300px;
+    height: 700px;
+}
+h3 {
+    margin-bottom: 10px;
+}
+.grid {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr; */
+    background-color: black;
+    width: 250px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+.options {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.circle {
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    place-self: center;
+}
+.square {
+    width: 10px;
+    height: 10px;
+    place-self: center;
+    border-style: solid;
+}
+.solution {
+    width: 125px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    text-justify: center;
+}
+.empty{
+    background-color: grey;
+}
+.guess {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.clues {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: gray;
+    border-style: solid;
+}
+#red {
+    background-color: red;
+}
+#orange {
+    background-color: orange;
+}
+#yellow {
+    background-color: yellow;
+}
+#green {
+    background-color: green;
+}
+#blue {
+    background-color: blue;
+}
+#purple {
+    background-color: purple;
+}
+.buttons{
+    margin-bottom: 10px;
+}
