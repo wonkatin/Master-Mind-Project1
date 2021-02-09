@@ -5,18 +5,20 @@ body {
     background-color: #bdeaff;
 }
 h1 {
-    color: purple
+    color: purple;
+    margin: 10px;
 }
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey;
+    background-color: #b8b8b8;
     width: 300px;
-    height: 700px;
+    height: 575px;
 }
 h3 {
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 .grid {
     display: grid;
@@ -24,7 +26,7 @@ h3 {
     grid-template-rows: 1fr; */
     background-color: black;
     width: 250px;
-    height: 40px;
+    height: 30px;
     margin-bottom: 10px;
 }
 .options {
@@ -36,7 +38,7 @@ h3 {
     grid-template-rows: 1fr;
 }
 .circle {
-    border-radius: 100%;
+    border-radius: 50%;
     width: 20px;
     height: 20px;
     place-self: center;
@@ -54,7 +56,7 @@ h3 {
     text-justify: center;
 }
 .empty{
-    background-color: grey;
+    background-color: #b8b8b8;
 }
 .guess {
     display: grid;
@@ -65,7 +67,7 @@ h3 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    background-color: gray;
+    background-color: #b8b8b8;
     border-style: solid;
 }
 .red {
@@ -89,3 +91,6 @@ h3 {
 .buttons{
     margin-bottom: 10px;
 }
+.options>div:hover, button{
+    cursor: pointer;
+} 
