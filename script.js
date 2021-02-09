@@ -9,7 +9,10 @@ let reveal = document.querySelector(".solution");
 let solutionOne = document.querySelector("#solution-one");
 let solutionTwo = document.querySelector("#solution-two");
 let solutionThree = document.querySelector("#solution-three");
-let options = document.querySelectorAll(".option")
+let options = document.querySelectorAll(".option");
+let reset = document.querySelector("#new-game");
+let check = document.querySelector("#check");
+let circles = document.querySelectorAll(".game-board .circle");
 /* Functions and Game Logic */
 randomizeColors = () => {
     for(i = 0; i < 3; i++) {
@@ -205,21 +208,51 @@ pickColor = (event) => {
             guesses = [];
         }
     } 
-}
-checkColor = () => {
+};
+checkGuess = () => {
     //check if solution[0] is == to array index, use indexOf()
     //also check if solution inluces arrayindex. use includes()
-}
+};
 revealSolution = () => {
-    // solutionOne.classList.remove("empty");
-    // solutionTwo.classList.remove("empty");
-    // solutionThree.classList.remove("empty");
     solutionOne.classList.add(solution[0]);
     solutionTwo.classList.add(solution[1]);
     solutionThree.classList.add(solution[2]);
-}
+};
+resetGame = () => {
+    round = 1;
+    circles.forEach(circle => {
+        let attribute = circle.getAttribute("class")
+        if (attribute.includes("red")) {
+            circle.classList.remove("red")
+        }
+        if (attribute.includes("orange")) {
+            circle.classList.remove("orange")
+        }
+        if (attribute.includes("yellow")) {
+            circle.classList.remove("yellow")
+        }
+        if (attribute.includes("green")) {
+            circle.classList.remove("green")
+        }
+        if (attribute.includes("blue")) {
+            circle.classList.remove("blue")
+        }
+        if (attribute.includes("purple")) {
+            circle.classList.remove("purple")
+        }
+        circle.classList.add("empty")
+        console.log(attribute)
+    })
+};
 /* Event Listeners */
 options.forEach(option => {
     option.addEventListener("click", pickColor);
 });
+reset.addEventListener("click", resetGame);
+check.addEventListener("click", checkGuess);
 
+// if (circle.classList.includes("red")){
+//     circle.classList.remove("red");
+//     circle.classList.add("empty");
+//     console.log(circle);
+// }
