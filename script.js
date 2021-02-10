@@ -27,6 +27,7 @@ randomizeColors = () => {
 };
 randomizeColors();
 pickColor = (event) => {
+    //lots of work to be done in here to check the guess
     let color = event.target.id;
     if (round === 1) {
         if (guesses.length === 0) {
@@ -209,6 +210,7 @@ pickColor = (event) => {
             guesses = [];
         }
     } 
+    console.log(guesses);
 };
 checkGuess = () => {
     //check if solution[0] is == to array index, use indexOf()
@@ -222,6 +224,7 @@ revealSolution = () => {
 resetGame = () => {
     round = 1;
     solution = [];
+    guesses = [];
     circles.forEach(circle => {
         circle.classList.add("empty")
         let attribute = circle.getAttribute("class")
