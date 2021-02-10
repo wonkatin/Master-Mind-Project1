@@ -5,7 +5,7 @@ let solution = [];
 let guesses = [];
 let round = 1;
 /* DOM References */
-let reveal = document.querySelector(".solution");
+// let reveal = document.querySelector(".solution");
 let solutionOne = document.querySelector("#solution-one");
 let solutionTwo = document.querySelector("#solution-two");
 let solutionThree = document.querySelector("#solution-three");
@@ -13,6 +13,7 @@ let options = document.querySelectorAll(".option");
 let reset = document.querySelector("#new-game");
 let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
+let answer = document.querySelectorAll(".solution .circle");
 /* Functions and Game Logic */
 randomizeColors = () => {
     for(i = 0; i < 3; i++) {
@@ -22,9 +23,9 @@ randomizeColors = () => {
         } 
         solution.push(color);
     }
+    console.log(solution);
 };
 randomizeColors();
-console.log(solution);
 pickColor = (event) => {
     let color = event.target.id;
     if (round === 1) {
@@ -220,7 +221,9 @@ revealSolution = () => {
 };
 resetGame = () => {
     round = 1;
+    solution = [];
     circles.forEach(circle => {
+        circle.classList.add("empty")
         let attribute = circle.getAttribute("class")
         if (attribute.includes("red")) {
             circle.classList.remove("red")
@@ -240,9 +243,29 @@ resetGame = () => {
         if (attribute.includes("purple")) {
             circle.classList.remove("purple")
         }
-        circle.classList.add("empty")
-        console.log(attribute)
+    });
+    answer.forEach(circle => {
+        let attribute = circle.getAttribute("class")
+        if (attribute.includes("red")) {
+            circle.classList.remove("red")
+        }
+        if (attribute.includes("orange")) {
+            circle.classList.remove("orange")
+        }
+        if (attribute.includes("yellow")) {
+            circle.classList.remove("yellow")
+        }
+        if (attribute.includes("green")) {
+            circle.classList.remove("green")
+        }
+        if (attribute.includes("blue")) {
+            circle.classList.remove("blue")
+        }
+        if (attribute.includes("purple")) {
+            circle.classList.remove("purple")
+        }
     })
+    randomizeColors();
 };
 /* Event Listeners */
 options.forEach(option => {
