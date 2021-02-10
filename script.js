@@ -5,7 +5,6 @@ let solution = [];
 let guesses = [];
 let round = 1;
 /* DOM References */
-// let reveal = document.querySelector(".solution");
 let solutionOne = document.querySelector("#solution-one");
 let solutionTwo = document.querySelector("#solution-two");
 let solutionThree = document.querySelector("#solution-three");
@@ -13,6 +12,7 @@ let options = document.querySelectorAll(".option");
 let reset = document.querySelector("#new-game");
 let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
+
 let answer = document.querySelectorAll(".solution .circle");
 /* Functions and Game Logic */
 randomizeColors = () => {
@@ -47,7 +47,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 2) {
         if (guesses.length === 0) {
@@ -67,7 +66,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 3) {
         if (guesses.length === 0) {
@@ -87,7 +85,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 4) {
         if (guesses.length === 0) {
@@ -107,7 +104,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 5) {
         if (guesses.length === 0) {
@@ -127,7 +123,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 6) {
         if (guesses.length === 0) {
@@ -147,7 +142,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 7) {
         if (guesses.length === 0) {
@@ -167,7 +161,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 8) {
         if (guesses.length === 0) {
@@ -187,7 +180,6 @@ pickColor = (event) => {
             guesses.push(color);
             round ++;
             console.log(round);
-            guesses = [];
         }
     } else if (round === 9) {
         if (guesses.length === 0) {
@@ -207,14 +199,20 @@ pickColor = (event) => {
             guesses.push(color);
             console.log(round);
             revealSolution();
-            guesses = [];
         }
     } 
-    console.log(guesses);
 };
 checkGuess = () => {
-    //check if solution[0] is == to array index, use indexOf()
+    console.log(guesses);
+    if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
+        //color all clues black
+        revealSolution();
+        console.log("YOU WON YOU ARE THE BEST")
+    } 
+    // else if ()
+    //check if solution[0] is == to array index, maybe use indexOf()?
     //also check if solution inluces arrayindex. use includes()
+    guesses = [];
 };
 revealSolution = () => {
     solutionOne.classList.add(solution[0]);
