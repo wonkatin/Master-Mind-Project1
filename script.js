@@ -12,7 +12,6 @@ let options = document.querySelectorAll(".option");
 let reset = document.querySelector("#new-game");
 let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
-
 let answer = document.querySelectorAll(".solution .circle");
 /* Functions and Game Logic */
 randomizeColors = () => {
@@ -45,9 +44,7 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
-        }
+        } 
     } else if (round === 2) {
         if (guesses.length === 0) {
             let guess = document.querySelector("#row-two .guess-one");
@@ -64,8 +61,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 3) {
         if (guesses.length === 0) {
@@ -83,8 +78,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 4) {
         if (guesses.length === 0) {
@@ -102,8 +95,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 5) {
         if (guesses.length === 0) {
@@ -121,8 +112,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 6) {
         if (guesses.length === 0) {
@@ -140,8 +129,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 7) {
         if (guesses.length === 0) {
@@ -159,8 +146,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 8) {
         if (guesses.length === 0) {
@@ -178,8 +163,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            round ++;
-            console.log(round);
         }
     } else if (round === 9) {
         if (guesses.length === 0) {
@@ -197,22 +180,33 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            console.log(round);
             revealSolution();
         }
-    } 
+    }
 };
 checkGuess = () => {
     console.log(guesses);
-    if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
-        //color all clues black
-        revealSolution();
-        console.log("YOU WON YOU ARE THE BEST")
+    if (guesses.length === 3) {
+        // check.addEventListener("click", checkGuess);
+        if (round === 1) {
+            if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
+                //color all clues black
+                revealSolution();
+                console.log("YOU WON YOU ARE THE BEST")
+            } 
+        }
+        // else if ()
+        //check if solution[0] is == to array index, maybe use indexOf()?
+        //also check if solution inluces arrayindex. use includes()
+        
+        //check each guess color against the solution
+        //for each guess color that's in the solution we get a white square
+        //if it's in the right position we get a black square
+        guesses = [];
+        round++;
+        console.log(guesses);
+        console.log(round)
     } 
-    // else if ()
-    //check if solution[0] is == to array index, maybe use indexOf()?
-    //also check if solution inluces arrayindex. use includes()
-    guesses = [];
 };
 revealSolution = () => {
     solutionOne.classList.add(solution[0]);
