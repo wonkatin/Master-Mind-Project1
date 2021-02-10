@@ -187,15 +187,22 @@ pickColor = (event) => {
 checkGuess = () => {
     console.log(guesses);
     if (guesses.length === 3) {
-        // check.addEventListener("click", checkGuess);
         if (round === 1) {
+            let clues = document.querySelectorAll("#row-one .square");
+            console.log(clues);
             if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
-                //color all clues black
+                clues.forEach(clue => {
+                    clue.classList.add("black")
+                })
                 revealSolution();
                 console.log("YOU WON YOU ARE THE BEST")
             } 
+            // else if () {
+
+            // }
+
         }
-        // else if ()
+       
         //check if solution[0] is == to array index, maybe use indexOf()?
         //also check if solution inluces arrayindex. use includes()
         

@@ -94,3 +94,9 @@ h3 {
 .options>div:hover, button{
     cursor: pointer;
 } 
+.black {
+    background-color: black;
+}
+.white {
+    background-color: white;
+}
