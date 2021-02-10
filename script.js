@@ -190,18 +190,35 @@ checkGuess = () => {
         if (round === 1) {
             let clues = document.querySelectorAll("#row-one .square");
             console.log(clues);
-            if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
-                clues.forEach(clue => {
-                    clue.classList.add("black")
-                })
-                revealSolution();
-                console.log("YOU WON YOU ARE THE BEST")
+            // if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
+            //     clues.forEach(clue => {
+            //         clue.classList.add("black")
+            //     })
+            //     revealSolution();
+            //     console.log("YOU WON YOU ARE THE BEST")
+            // } 
+            if (guesses.includes(solution[0])) {
+                if (solution.indexOf(solution[0]) === guesses.indexOf(solution[0])){
+                    console.log("black square");
+                } else {
+                    console.log("white square")
+                }
             } 
-            // else if () {
-
-            // }
-
-        }
+            if (guesses.includes(solution[1])) {
+                if (solution.indexOf(solution[1]) === guesses.indexOf(solution[1])){
+                    console.log("black square");
+                } else {
+                    console.log("white square")
+                }
+            } 
+            if (guesses.includes(solution[2])) {
+                if (solution.indexOf(solution[2]) === guesses.indexOf(solution[2])){
+                    console.log("black square");
+                } else {
+                    console.log("white square")
+                }
+            } 
+        } 
        
         //check if solution[0] is == to array index, maybe use indexOf()?
         //also check if solution inluces arrayindex. use includes()
@@ -211,7 +228,6 @@ checkGuess = () => {
         //if it's in the right position we get a black square
         guesses = [];
         round++;
-        console.log(guesses);
         console.log(round)
     } 
 };
