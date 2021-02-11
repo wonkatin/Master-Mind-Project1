@@ -632,6 +632,8 @@ resetGame = () => {
             circle.classList.remove("purple")
         }
     });
+    hidden.classList.remove("winlose")
+    hidden.innerText = "";
     randomizeColors();
 };
 /* Event Listeners */
