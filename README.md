@@ -13,7 +13,8 @@ You lose if you exhaust the number of turns allowed (9).
 ## **Wireframes**
 ![1](assets/state1.png)
 ![2](assets/state2.png)
-![2](assets/state3.png)
+![3](assets/state3.png)
+![4](assets/state4.png)
 ## **Use Story**
 When the player loads the game, there will be:
 - an empty board, with 9-12 rows 
@@ -47,6 +48,7 @@ New guesses & clues are loaded onto the next available row.
 ## **MVP**
 A three color code, guess/check the code, recieve clues, 9 chances to win/lose. 
 ## **Stretch Goals**
+- Win Message & lose message
 - delete button: if the player wants to remove their colors before they guess, they can select “Delete”
 - alternately, guesses could be loaded/removed manually somehow instead of just L to R 
 - provide the option to increase the secret code to 4+ colors
