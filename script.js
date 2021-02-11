@@ -14,6 +14,7 @@ let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
 let squares = document.querySelectorAll(".game-board .square");
 let answer = document.querySelectorAll(".solution .circle");
+let hidden = document.querySelector("#hidden");
 /* Functions and Game Logic */
 randomizeColors = () => {
     for(i = 0; i < 3; i++) {
@@ -181,7 +182,6 @@ pickColor = (event) => {
             guess.classList.remove("empty");
             guess.classList.add(color)
             guesses.push(color);
-            revealSolution();
         }
     }
 };
@@ -237,6 +237,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -274,6 +275,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -311,6 +313,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -348,6 +351,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -385,6 +389,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -422,6 +427,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -459,6 +465,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -496,6 +503,7 @@ checkGuess = () => {
                 clueThree.classList.add("black")
                 //console.log("you win")
                 revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
                 clueOne.classList.add("white")
             } else if (blackSquares === 0 && whiteSquares === 2) {
@@ -512,37 +520,46 @@ checkGuess = () => {
             let clueTwo = document.querySelector("#row-nine .clue-two");
             let clueThree = document.querySelector("#row-nine .clue-three");
             if (blackSquares === 1 && whiteSquares === 0){
-                clueOne.classList.add("black")
+                clueOne.classList.add("black");
+                lose()
             } else if (blackSquares === 1 && whiteSquares === 1) {
                 clueOne.classList.add("black");
-                clueTwo.classList.add("white")
+                clueTwo.classList.add("white");
+                lose()
             } else if (blackSquares === 1 && whiteSquares === 2) {
                 clueOne.classList.add("black");
                 clueTwo.classList.add("white");
-                clueThree.classList.add("white")
+                clueThree.classList.add("white");
+                lose()
             } else if (blackSquares === 2 && whiteSquares === 0) {
                 clueOne.classList.add("black");
-                clueTwo.classList.add("black")
+                clueTwo.classList.add("black");
+                lose()
             } else if (blackSquares === 2 && whiteSquares === 1) {
                 clueOne.classList.add("black");
                 clueTwo.classList.add("black");
-                clueThree.classList.add("white")
+                clueThree.classList.add("white");
+                lose()
             } else if (blackSquares === 3 && whiteSquares === 0) {
                 clueOne.classList.add("black");
                 clueTwo.classList.add("black");
-                clueThree.classList.add("black")
+                clueThree.classList.add("black");
                 //console.log("you win")
-                revealSolution();
+                win();
             } else if (blackSquares === 0 && whiteSquares === 1) {
-                clueOne.classList.add("white")
+                clueOne.classList.add("white");
+                lose()
             } else if (blackSquares === 0 && whiteSquares === 2) {
                 clueOne.classList.add("white");
-                clueTwo.classList.add("white")
+                clueTwo.classList.add("white");
+                lose()
             } else if (blackSquares === 0 && whiteSquares === 3) {
                 clueOne.classList.add("white");
                 clueTwo.classList.add("white");
-                clueThree.classList.add("white")
-            };
+                clueThree.classList.add("white");
+                lose()
+            }; 
+            revealSolution();
         }; 
         guesses = [];
         round++;
@@ -554,6 +571,14 @@ revealSolution = () => {
     solutionOne.classList.add(solution[0]);
     solutionTwo.classList.add(solution[1]);
     solutionThree.classList.add(solution[2]);
+};
+win = () => {
+    hidden.classList.add("winlose");
+    hidden.innerText = "YOU WIN!!!"
+};
+lose = () => {
+    hidden.classList.add("winlose");
+    hidden.innerText = "YOU LOSE!!!"
 };
 resetGame = () => {
     round = 1;

@@ -46,10 +46,9 @@ All of the guesses and the peg clues remain on the board.
 New guesses & clues are loaded onto the next available row. 
 
 ## **MVP**
-A three color code, guess/check the code, recieve clues, 9 chances to win/lose. 
-## **Stretch Goals**
-- Win Message & lose message
-- delete button: if the player wants to remove their colors before they guess, they can select “Delete”
+A three color code, guess/check the code, recieve clues, 9 chances to win/lose, instructions & win message or lose message. 
+## **Stretch Goals** 
+- undo button: if the player wants to remove their colors before they guess, they can select "Undo"
 - alternately, guesses could be loaded/removed manually somehow instead of just L to R 
 - provide the option to increase the secret code to 4+ colors
 - provide the option to allow repeating colors and blacks in the secret code
