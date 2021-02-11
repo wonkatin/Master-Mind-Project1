@@ -187,50 +187,98 @@ pickColor = (event) => {
 checkGuess = () => {
     console.log(guesses);
     if (guesses.length === 3) {
+        let blackSquares = 0;
+        let whiteSquares = 0;
         if (round === 1) {
-            let clues = document.querySelectorAll("#row-one .square");
-            console.log(clues);
-            // if (solution[0] === guesses[0] && solution[1] === guesses[1] && solution[2] === guesses[2]){
-            //     clues.forEach(clue => {
-            //         clue.classList.add("black")
-            //     })
-            //     revealSolution();
-            //     console.log("YOU WON YOU ARE THE BEST")
-            // } 
             if (guesses.includes(solution[0])) {
                 if (solution.indexOf(solution[0]) === guesses.indexOf(solution[0])){
-                    console.log("black square");
+                    blackSquares++;
                 } else {
-                    console.log("white square")
+                    whiteSquares++;
                 }
             } 
             if (guesses.includes(solution[1])) {
                 if (solution.indexOf(solution[1]) === guesses.indexOf(solution[1])){
-                    console.log("black square");
+                    blackSquares++;
                 } else {
-                    console.log("white square")
+                    whiteSquares++;
                 }
             } 
             if (guesses.includes(solution[2])) {
                 if (solution.indexOf(solution[2]) === guesses.indexOf(solution[2])){
-                    console.log("black square");
+                    blackSquares++;
                 } else {
-                    console.log("white square")
+                    whiteSquares++;
                 }
             } 
+            // console.log(`There are ${blackSquares} black squares`);
+            // console.log(`There are ${whiteSquares} white squares`);
+
+            if (blackSquares === 1 && whiteSquares === 0){
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black")
+            } 
+            else if (blackSquares === 1 && whiteSquares === 1) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".white")
+            } 
+            else if (blackSquares === 1 && whiteSquares === 2) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".white");
+                let clueThree = document.querySelector("#row-one .clue-three");
+                clueThree.classList.add(".white")
+            } 
+            else if (blackSquares === 2 && whiteSquares === 0) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".black")
+            } 
+            else if (blackSquares === 2 && whiteSquares === 1) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".black");
+                let clueThree = document.querySelector("#row-one .clue-three");
+                clueThree.classList.add(".white")
+            } 
+            else if (blackSquares === 3 && whiteSquares === 0) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".black");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".black");
+                let clueThree = document.querySelector("#row-one .clue-three");
+                clueThree.classList.add(".black")
+            } 
+            else if (blackSquares === 0 && whiteSquares === 1) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".white")
+            }
+            else if (blackSquares === 0 && whiteSquares === 2) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".white");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".white")
+            }
+            else if (blackSquares === 0 && whiteSquares === 3) {
+                let clueOne = document.querySelector("#row-one .clue-one");
+                clueOne.classList.add(".white");
+                let clueTwo = document.querySelector("#row-one .clue-two");
+                clueTwo.classList.add(".white");
+                let clueThree = document.querySelector("#row-one .clue-three");
+                clueThree.classList.add(".white")
+            }
         } 
-       
-        //check if solution[0] is == to array index, maybe use indexOf()?
-        //also check if solution inluces arrayindex. use includes()
-        
-        //check each guess color against the solution
-        //for each guess color that's in the solution we get a white square
-        //if it's in the right position we get a black square
         guesses = [];
         round++;
-        console.log(round)
+        console.log(`ROUND ${round}`)
     } 
 };
+
 revealSolution = () => {
     solutionOne.classList.add(solution[0]);
     solutionTwo.classList.add(solution[1]);
