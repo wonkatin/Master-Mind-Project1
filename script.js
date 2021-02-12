@@ -9,6 +9,7 @@ let solutionOne = document.querySelector("#solution-1");
 let solutionTwo = document.querySelector("#solution-2");
 let solutionThree = document.querySelector("#solution-3");
 let options = document.querySelectorAll(".option");
+let undo = document.querySelector("#undo");
 let reset = document.querySelector("#new-game");
 let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
@@ -42,6 +43,24 @@ pickColor = (event) => {
     } else if (guesses.length === 2){
         addColor(guess);
     };
+    console.log(guesses)
+};
+undoPick = () => {
+    // guesses.pop();
+    let guess = document.querySelector(`#row-${round} .guess-${guesses.length}`);
+    let picks = document.querySelectorAll(`#row-${round} .circle`);
+    if (guesses.length === 3){
+        guess.classList.remove(`${guesses[2]}`);
+        guess.classList.add("empty")
+    } else if (guesses.length === 2){
+        guess.classList.remove(`${guesses[1]}`);
+        guess.classList.add("empty")
+    } else if (guesses.length === 1){
+        guess.classList.remove(`${guesses[0]}`);
+        guess.classList.add("empty")
+    };
+    guesses.pop();
+    console.log(guesses)
 };
 black = (clue) => {
     clue.classList.add("black")
@@ -146,3 +165,4 @@ options.forEach(option => {
 });
 reset.addEventListener("click", resetGame);
 check.addEventListener("click", checkGuess);
+undo.addEventListener("click", undoPick);
