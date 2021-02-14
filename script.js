@@ -1,3 +1,10 @@
+// const canvas = document.querySelector("body");
+// const ctx = canvas.getContext("2d");
+// canvas.setAttribute("height", getComputedStyle(canvas)["height"]);
+// canvas.setAttribute("width", getComputedStyle(canvas)["width"]);
+// ctx.font = "60px Georgia";
+// ctx.strokeText("MASTERMIND", 10, 50)
+
 /* Constants */
 const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
 /* Game Logic Variables and State */
@@ -15,16 +22,21 @@ let check = document.querySelector("#check");
 let circles = document.querySelectorAll(".game-board .circle");
 let squares = document.querySelectorAll(".game-board .square");
 let answer = document.querySelectorAll(".solution .circle");
-let hidden = document.querySelector("#hidden");
+let instructBtn = document.querySelector("#instructions");
+let instructions = document.querySelector(".instructions")
+let message = document.querySelector("#message");
+let winlose = document.querySelector(".winlose");
+let game = document.querySelector(".game");
+let okay = document.querySelectorAll(".ok");
 /* Functions and Game Logic */
 randomizeColors = () => {
     for(i = 0; i < 3; i++) {
         let color = colors[Math.floor(Math.random() * colors.length)];
         while(solution.includes(color)){
             color = colors[Math.floor(Math.random() * colors.length)];
-        } 
+        }; 
         solution.push(color);
-    }
+    };
     console.log(solution);
 };
 randomizeColors();
@@ -35,7 +47,7 @@ pickColor = (event) => {
         guess.classList.remove("empty");
         guess.classList.add(color);
         guesses.push(color);
-    }
+    };
     if (guesses.length === 0){
         addColor(guess);
     } else if (guesses.length === 1){
@@ -43,24 +55,20 @@ pickColor = (event) => {
     } else if (guesses.length === 2){
         addColor(guess);
     };
-    console.log(guesses)
 };
 undoPick = () => {
-    // guesses.pop();
     let guess = document.querySelector(`#row-${round} .guess-${guesses.length}`);
-    let picks = document.querySelectorAll(`#row-${round} .circle`);
     if (guesses.length === 3){
         guess.classList.remove(`${guesses[2]}`);
-        guess.classList.add("empty")
+        guess.classList.add("empty");
     } else if (guesses.length === 2){
         guess.classList.remove(`${guesses[1]}`);
-        guess.classList.add("empty")
+        guess.classList.add("empty");
     } else if (guesses.length === 1){
         guess.classList.remove(`${guesses[0]}`);
-        guess.classList.add("empty")
+        guess.classList.add("empty");
     };
     guesses.pop();
-    console.log(guesses)
 };
 black = (clue) => {
     clue.classList.add("black")
@@ -69,7 +77,6 @@ white = (clue) => {
     clue.classList.add("white")
 };
 checkGuess = () => {
-    //console.log(guesses);
     if (guesses.length === 3) {
         let blackSquares = 0;
         let whiteSquares = 0;
@@ -114,7 +121,7 @@ checkGuess = () => {
         };
         guesses = [];
         round++;
-    } 
+    };
 };
 
 revealSolution = () => {
@@ -123,12 +130,29 @@ revealSolution = () => {
     solutionThree.classList.add(solution[2]);
 };
 win = () => {
-    hidden.classList.add("winlose");
-    hidden.innerText = "YOU WIN!!!"
+    game.classList.add("hidden");
+    winlose.classList.remove("hidden")
+    // message.classList.add("winlose");
+    message.innerText = "YOU WIN!!!";
 };
 lose = () => {
-    hidden.classList.add("winlose");
-    hidden.innerText = "YOU LOSE!!!"
+    game.classList.add("hidden");
+    winlose.classList.remove("hidden")
+    // message.classList.add("winlose");
+    message.innerText = "YOU LOSE!!!";
+};
+instruct = () => {
+    game.classList.add("hidden");
+    instructions.classList.remove("hidden")
+};
+oK = (e) => {
+    let parent = e.target.parentNode;
+    let grandparent = parent.parentNode;
+    //console.log(grandparent);
+    grandparent.classList.add("hidden");
+    game.classList.remove("hidden");
+
+    // instructions.classList.add("hidden")
 };
 resetGame = () => {
     round = 1;
@@ -146,17 +170,17 @@ resetGame = () => {
     squares.forEach(square => {
         square.classList.remove("black");
         square.classList.remove("white")
-    })
+    });
     answer.forEach(circle => {
         let attribute = circle.getAttribute("class")
         colors.forEach(color => {
             if (attribute.includes(`${color}`)) {
                 circle.classList.remove(`${color}`);
             };
-        })
+        });
     });
-    hidden.classList.remove("winlose")
-    hidden.innerText = "";
+    message.classList.remove("winlose")
+    message.innerText = "";
     randomizeColors();
 };
 /* Event Listeners */
@@ -166,3 +190,7 @@ options.forEach(option => {
 reset.addEventListener("click", resetGame);
 check.addEventListener("click", checkGuess);
 undo.addEventListener("click", undoPick);
+instructBtn.addEventListener("click", instruct)
+okay.forEach(btn => {
+    btn.addEventListener("click", oK);
+});

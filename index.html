@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <title>Master Mind!</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap" rel="stylesheet">
+    <title>MASTERMIND!</title>
 </head>
 <body>
     <div class="mastermind">
-        <h1>Master Mind</h1>
+        <div class="instructions hidden">
+            <div>Pick 3 colors, click guess to check your code against the solution.</div>
+            <div> ---a white square indicates a right color</div>
+            <div> ---a black square indicates a right color & right position</div>
+            <div>Use logical deduction to solve the code!</div>
+            <div><button class="ok">OK</button></div>
+        </div>
+        <div class="winlose hidden">
+            <div id="message"></div>
+            <div><button class="ok">OK</button></div>
+        </div>
         <div class="game">
             <h3>Choose your code</h3>
             <div class="grid options">
@@ -24,9 +36,18 @@
             </div>
             
             <div class="buttons">
-                <button id="undo">Undo</button>
-                <button id="check">Guess</button>
-                <button id="new-game">New Game</button>
+                <div>
+                    <button id="undo">Undo</button>
+                </div>
+                <div>
+                    <button id="check">Guess</button>
+                </div>
+                <div id="instruction-box">
+                    <button id="instructions">Instructions</button>
+                </div>
+                <div>
+                    <button id="new-game">Reset</button>
+                </div>
             </div>
             
             <div class="game-board">
@@ -155,11 +176,5 @@
             </div>
         </div>
     </div>
-    <div class="instructions">
-        <p>Pick 3 colors, click guess to check your code against the solution.</p>
-        <p> ---a white square indicates a right color</p>
-        <p> ---a black square indicates a right color & right position</p>
-        <p>Use logical deduction to solve the code!</p>
-        <div id="hidden"></div>
-    </div>
-    <script src="./script.js"></script>
+    <script src="./script.js"></script>  
+</body>

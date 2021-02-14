@@ -1,30 +1,42 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #bdeaff;
+    margin-top: 50px;
+    background-image: url("./MASTERMIND.png");
+    background-repeat: repeat;
+    background-position: top left;
+    background-size: 300px;
+}
+.winlose {
+    place-self: center;
+    width: max-content;
     text-align: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+}
+#message {
+    background-color: #29bbff;
+    color: white;
+    font-size: 30px;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 14px;
+
 }
 .mastermind {
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    align-items: center; */
-    place-self: end;
-}
-h1 {
-    /* grid-column: 1 / 2 ;
-    grid-row: 1 / 2 ; */
-    color: #29bbff;
-    margin-top: 0px ;
-    margin-bottom: 10px;
-    font-family: "Montserrat";
+    background-color: rgb(189, 234, 255, 1);
+    width: 300px;
+    height: 535px;
+    border-style: solid;
+    border-color: #29bbff;
+    border-radius: 14px;
 }
 .game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #b8b8b8;
-    width: 300px;
-    height: 535px;
 }
 h3 {
     margin-bottom: 10px;
@@ -35,13 +47,52 @@ p {
     margin-top: 60px;
     /* margin: 0px; */
 }
+.buttons {
+    width: 300px;
+    max-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 0px;
+}
+.buttons>div {
+    /* max-width: 86px; */
+    width: 40px;
+    height: 30px;
+    margin: 6px;
+    text-align: center;
+}
+#instruction-box {
+    width: 80px;
+}
+button {
+    color: black;
+    background-color: #29bbff;
+    border-radius: 14px;
+    border-style: none;
+    padding: 1px 6px;
+    outline: none;
+    font-family: "M PLUS Rounded 1c";
+    font-size: 12px;
+    box-shadow: 2px 2px 0px black;
+    place-self: center;
+}
+button:hover {
+    cursor: pointer;
+    padding: 3px 8px;
+    background-color: white;
+} 
+
 .instructions {
-  margin-bottom: 20px;
-  margin-left: 30px;
+  padding: 20px;
   font-size: 14px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.instructions>div {
+    max-width: 300px;
+    height: 40px;
 }
 .grid {
     display: grid;
@@ -51,14 +102,24 @@ p {
     width: 250px;
     height: 30px;
     margin-bottom: 8px;
+    border-radius: 14px;
 }
 .options {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
 }
+.option:hover {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
 .row {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+    /* border-radius: 14px; */
+}
+.clues {
+    border-radius: 0px 14px 14px 0px;
 }
 .circle {
     border-radius: 50%;
@@ -67,8 +128,8 @@ p {
     place-self: center;
 }
 .square {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     place-self: center;
     border-style: solid;
 }
@@ -80,10 +141,11 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     text-justify: center;
+    border-radius: 14px;
     /* margin-bottom: 20px; */
 }
 .empty{
-    background-color: #b8b8b8;
+    background-color: rgb(205, 205, 205);
 }
 .guess {
     display: grid;
@@ -94,11 +156,11 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    background-color: #b8b8b8;
+    background-color: rgb(205, 205, 205);
     border-style: solid;
 }
 .red {
-    background-color: red;
+    background-color: rgb(255, 0, 0);
 }
 .orange {
     background-color: orange;
@@ -115,22 +177,13 @@ p {
 .purple {
     background-color: purple;
 }
-.buttons{
-    margin-bottom: 10px;
-}
-.options>div:hover, button{
-    cursor: pointer;
-} 
 .black {
     background-color: black;
 }
 .white {
     background-color: white;
 }
-.winlose {
-    background-color: #29bbff;
-    color: white;
-    font-size: 30px;
-    place-self: end start;
-    padding: 10px 20px 10px 20px;
+.hidden {
+    display: none;
 }
+
