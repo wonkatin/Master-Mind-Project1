@@ -1,6 +1,12 @@
 /* Constants */
 const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
 /* Game Logic Variables and State */
+canvas.setAttribute("height", getComputedStyle(canvas)["height"])
+canvas.setAttribute("width", getComputedStyle(canvas)["width"])
+
 let solution = [];
 let guesses = [];
 let round = 1;
@@ -17,11 +23,42 @@ let squares = document.querySelectorAll(".game-board .square");
 let answer = document.querySelectorAll(".solution .circle");
 let instructBtn = document.querySelector("#instructions");
 let instructions = document.querySelector(".instructions")
-let message = document.querySelector("#message");
+// let message = document.querySelector("#message");
 let winlose = document.querySelector(".winlose");
 let game = document.querySelector(".game");
 let okay = document.querySelectorAll(".ok");
+let winImg = document.getElementById("win");
+let loseImg = document.getElementById("lose");
+let set;
 /* Functions and Game Logic */
+clearing = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+};
+canvasing = (outcome) => {
+    clearing();
+    let randomX = Math.floor(Math.random() * 100);
+    let randomY = Math.floor(Math.random() * 500 );
+    console.log(randomX, randomY);
+    ctx.drawImage(outcome, randomX, randomY);
+};
+win = () => {
+    set = setInterval(canvasing, 300, winImg);
+    revealSolution();
+    game.classList.add("hidden");
+    winlose.classList.remove("hidden");
+};
+lose = () => {
+    set = setInterval(canvasing, 300, loseImg);
+    revealSolution();
+    game.classList.add("hidden");
+    winlose.classList.remove("hidden");
+};
+toggleHome = () => {
+    clearInterval(set);
+    winlose.classList.add("hidden");
+    game.classList.remove("hidden");
+};
+canvas.addEventListener("click", toggleHome);
 randomizeColors = () => {
     for(i = 0; i < 3; i++) {
         let color = colors[Math.floor(Math.random() * colors.length)];
@@ -111,30 +148,16 @@ checkGuess = () => {
         } else if (round === 9) {
             lose();
             // revealSolution();
-        };
-        guesses = [];
-        round++;
+        } else {
+            guesses = [];
+            round++;
+        }
     };
 };
-
 revealSolution = () => {
     solutionOne.classList.add(solution[0]);
     solutionTwo.classList.add(solution[1]);
     solutionThree.classList.add(solution[2]);
-};
-win = () => {
-    game.classList.add("hidden");
-    winlose.classList.remove("hidden")
-    // message.classList.add("winlose");
-    message.innerText = "YOU WIN!!!";
-    revealSolution();
-};
-lose = () => {
-    game.classList.add("hidden");
-    winlose.classList.remove("hidden")
-    // message.classList.add("winlose");
-    message.innerText = "YOU LOSE!!!";
-    revealSolution();
 };
 instruct = () => {
     game.classList.add("hidden");
@@ -143,11 +166,8 @@ instruct = () => {
 oK = (e) => {
     let parent = e.target.parentNode;
     let grandparent = parent.parentNode;
-    //console.log(grandparent);
     grandparent.classList.add("hidden");
     game.classList.remove("hidden");
-
-    // instructions.classList.add("hidden")
 };
 resetGame = () => {
     round = 1;
@@ -174,8 +194,6 @@ resetGame = () => {
             };
         });
     });
-    message.classList.remove("winlose")
-    message.innerText = "";
     randomizeColors();
 };
 /* Event Listeners */

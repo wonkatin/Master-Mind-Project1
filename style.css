@@ -10,25 +10,22 @@ body {
     background-size: 300px;
 }
 .winlose {
-    place-self: center;
-    width: max-content;
-    text-align: center;
-}
-#message {
-    background-color: #29bbff;
-    color: white;
-    font-size: 30px;
-    margin: 20px;
-    padding: 10px 20px 10px 20px;
+    text-align: center; 
     border-radius: 14px;
-
+}
+#canvas {
+    width: 300px;
+    height: 535px;
+    border-radius: 14px;
+}
+#canvas:hover {
+    cursor: pointer;
 }
 .mastermind {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background: linear-gradient(#bdeaff 0%, #29bbff 70%, #0070a6 100%); */
     background-color: #c9eeff;
     width: 300px;
     height: 535px;
@@ -36,14 +33,6 @@ body {
     border-color: #29bbff;
     border-radius: 14px;
 }
-/* .mastermind::before{
-    content: "";
-    width: 280px;
-    height: 515px;
-    background: linear-gradient(#d6f2ff 0%, #bdeaff 10%, #79d5ff 70%, #00aeff 100%);
-    border-radius: 14px;
-    filter: blur(10px); 
-} */
 .game {
     display: flex;
     flex-direction: column;
@@ -56,7 +45,6 @@ h3 {
 p {
     text-align: left;
     margin-top: 60px;
-    /* margin: 0px; */
 }
 .buttons {
     width: 300px;
@@ -67,7 +55,6 @@ p {
     margin-bottom: 0px;
 }
 .buttons>div {
-    /* max-width: 86px; */
     width: 40px;
     height: 30px;
     margin: 6px;
@@ -81,11 +68,11 @@ button {
     background-color: #9ce1ff;
     border-radius: 14px;
     border-style: none;
-    padding: 1px 6px;
+    padding: 1px 7px;
     outline: none;
     font-family: "M PLUS Rounded 1c";
     font-size: 12px;
-    box-shadow: 2px 2px 0px black;
+    /* box-shadow: 2px 2px 0px black; */
     place-self: center;
 }
 button:hover {
@@ -108,8 +95,6 @@ button:hover {
 }
 .grid {
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr; */
     background-color: black;
     width: 250px;
     height: 30px;
@@ -128,7 +113,6 @@ button:hover {
 .row {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    /* border-radius: 14px; */
 }
 .clues {
     border-radius: 0px 14px 14px 0px;
@@ -149,20 +133,8 @@ button:hover {
     place-self: center;
     border-style: inset;
     border-width: 2px;
-    /* border-color: #858585; */
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(#f2f2f2 0%, #e3e3e3 70%, #858585 100%); */
 }
-/* .square::before{
-    content: "";
-    width: 7px;
-    height: 7px;
-    background: linear-gradient(#858585 0%, #f2f2f2 70%,#f2f2f2 100%); 
-    filter: blur(2px); 
-} */
+
 #solution {
     margin-top: 0px;
 }
@@ -172,18 +144,16 @@ button:hover {
     grid-template-rows: 1fr;
     text-justify: center;
     border-radius: 14px;
-    /* margin-bottom: 20px; */
 }
 .empty{
-    /* background-color: #cdcdcd; */
-    background: linear-gradient(#f2f2f2 0%, #e3e3e3 70%, #858585 100%);
+    background: linear-gradient(#ffffff 0%, #d5d5d5 30%, #858585 100%);
     transform: rotate(-20deg);
 }
 .empty::before{
     content: "";
     height: 19px;
     width: 19px;
-    background: linear-gradient(#858585 0%, #e3e3e3 70%,#f2f2f2 100%);
+    background: linear-gradient(#858585 0%, #e3e3e3 50%,#ffffff 100%);
     border-radius: 50%;
     filter: blur(2px); 
 }
@@ -196,11 +166,13 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    background-color: #e3e3e3;
+    background-color: #c6c6c6;
     border-style: solid;
+    border-left: none;
+    border-width: 2px;
+    border-color: #858585;
 }
 .red {
-    /* background-color:  rgb(255, 0, 0); */
     background: linear-gradient(#ff0000 0%, #c70000 50%, #780000 100%);
 }
 .red::before{
