@@ -1,10 +1,3 @@
-// const canvas = document.querySelector("body");
-// const ctx = canvas.getContext("2d");
-// canvas.setAttribute("height", getComputedStyle(canvas)["height"]);
-// canvas.setAttribute("width", getComputedStyle(canvas)["width"]);
-// ctx.font = "60px Georgia";
-// ctx.strokeText("MASTERMIND", 10, 50)
-
 /* Constants */
 const colors = ["red", "orange", "yellow", "green", "blue", "purple"];
 /* Game Logic Variables and State */
@@ -114,10 +107,10 @@ checkGuess = () => {
         };
         if (blackSquares === 3) {
             win();
-            revealSolution();
+            // revealSolution();
         } else if (round === 9) {
             lose();
-            revealSolution();
+            // revealSolution();
         };
         guesses = [];
         round++;
@@ -134,12 +127,14 @@ win = () => {
     winlose.classList.remove("hidden")
     // message.classList.add("winlose");
     message.innerText = "YOU WIN!!!";
+    revealSolution();
 };
 lose = () => {
     game.classList.add("hidden");
     winlose.classList.remove("hidden")
     // message.classList.add("winlose");
     message.innerText = "YOU LOSE!!!";
+    revealSolution();
 };
 instruct = () => {
     game.classList.add("hidden");

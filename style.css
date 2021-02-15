@@ -26,13 +26,24 @@ body {
 .mastermind {
     display: flex;
     flex-direction: column;
-    background-color: rgb(189, 234, 255, 1);
+    align-items: center;
+    justify-content: center;
+    /* background: linear-gradient(#bdeaff 0%, #29bbff 70%, #0070a6 100%); */
+    background-color: #c9eeff;
     width: 300px;
     height: 535px;
     border-style: solid;
     border-color: #29bbff;
     border-radius: 14px;
 }
+/* .mastermind::before{
+    content: "";
+    width: 280px;
+    height: 515px;
+    background: linear-gradient(#d6f2ff 0%, #bdeaff 10%, #79d5ff 70%, #00aeff 100%);
+    border-radius: 14px;
+    filter: blur(10px); 
+} */
 .game {
     display: flex;
     flex-direction: column;
@@ -67,7 +78,7 @@ p {
 }
 button {
     color: black;
-    background-color: #29bbff;
+    background-color: #9ce1ff;
     border-radius: 14px;
     border-style: none;
     padding: 1px 6px;
@@ -81,6 +92,7 @@ button:hover {
     cursor: pointer;
     padding: 3px 8px;
     background-color: white;
+    color: black;
 } 
 
 .instructions {
@@ -126,13 +138,31 @@ button:hover {
     width: 20px;
     height: 20px;
     place-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .square {
     width: 8px;
     height: 8px;
     place-self: center;
-    border-style: solid;
+    border-style: inset;
+    border-width: 2px;
+    /* border-color: #858585; */
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#f2f2f2 0%, #e3e3e3 70%, #858585 100%); */
 }
+/* .square::before{
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: linear-gradient(#858585 0%, #f2f2f2 70%,#f2f2f2 100%); 
+    filter: blur(2px); 
+} */
 #solution {
     margin-top: 0px;
 }
@@ -145,7 +175,17 @@ button:hover {
     /* margin-bottom: 20px; */
 }
 .empty{
-    background-color: rgb(205, 205, 205);
+    /* background-color: #cdcdcd; */
+    background: linear-gradient(#f2f2f2 0%, #e3e3e3 70%, #858585 100%);
+    transform: rotate(-20deg);
+}
+.empty::before{
+    content: "";
+    height: 19px;
+    width: 19px;
+    background: linear-gradient(#858585 0%, #e3e3e3 70%,#f2f2f2 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .guess {
     display: grid;
@@ -156,26 +196,76 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    background-color: rgb(205, 205, 205);
+    background-color: #e3e3e3;
     border-style: solid;
 }
 .red {
-    background-color: rgb(255, 0, 0);
+    /* background-color:  rgb(255, 0, 0); */
+    background: linear-gradient(#ff0000 0%, #c70000 50%, #780000 100%);
+}
+.red::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#ff7575 0%, #ff0000 70%, #9c0000 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .orange {
-    background-color: orange;
+    background: linear-gradient(#ffa500 0%, #e39300 50%, #875800 100%);
 }
+.orange::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#fcd17e 0%, #ffa500 70%, #c27e00 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
+}
+
 .yellow {
-    background-color: yellow;
+    background: linear-gradient(#ffff00 0%, #e0e000 50%, #757500 100%);
+}
+.yellow::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#ffff87 0%, #ffff00 70%, #9c9c00 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .green {
-    background-color: green;
+    background: linear-gradient(#00a300 0%, #008000 70%, #005400 100%);
+}
+.green::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#72cf72 0%, #00a300 70%, #007000 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .blue {
-    background-color: blue;
+    background: linear-gradient(#0055ff 0%, #004be3 70%, #002775 100%);
+}
+.blue::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#6e9eff 0%, #0055ff 70%, #003cb5 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .purple {
-    background-color: purple;
+    background: linear-gradient(#9403fc 0%, #8000db 70%, #460078 100%);
+}
+.purple::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    background: linear-gradient(#cb82ff 0%, #9403fc 70%, #6400ab 100%);
+    border-radius: 50%;
+    filter: blur(2px); 
 }
 .black {
     background-color: black;
