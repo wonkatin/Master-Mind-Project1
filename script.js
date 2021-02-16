@@ -14,10 +14,15 @@ let round = 1;
 let solutionOne = document.querySelector("#solution-1");
 let solutionTwo = document.querySelector("#solution-2");
 let solutionThree = document.querySelector("#solution-3");
+let buttons = document.querySelector(".buttons");
+let levels = document.querySelector(".choose");
+let choose = document.querySelectorAll(".choose>button");
 let options = document.querySelectorAll(".option");
 let undo = document.querySelector("#undo");
 let reset = document.querySelector("#new-game");
 let check = document.querySelector("#check");
+let gameBoard = document.querySelector(".game-board")
+let rows = document.querySelectorAll(".row");
 let circles = document.querySelectorAll(".game-board .circle");
 let squares = document.querySelectorAll(".game-board .square");
 let answer = document.querySelectorAll(".solution .circle");
@@ -30,25 +35,64 @@ let okay = document.querySelectorAll(".ok");
 let winImg = document.getElementById("win");
 let loseImg = document.getElementById("lose");
 let set;
+let gameLevel = 0;
 /* Functions and Game Logic */
+class gameRows {
+    constructor(level){
+        this.level = level
+        this.rows = 9
+    }
+    createGameBoard(){
+        for(let i = 0; i < this.rows; i++) {
+            let row = document.createElement("div");
+            row.id = `row-${i + 1}`;
+            row.className = "grid row";
+            gameBoard.appendChild(row);
+            let guesses = document.createElement("div");
+            guesses.className = "guess";
+            row.appendChild(guesses);
+            let clues =document.createElement("div");
+            clues.className = "clues";
+            row.appendChild(clues);
+            for (let i = 0; i < this.level; i++){
+                let circle = document.createElement("div");
+                circle.className = `empty circle guess-${i + 1}`;
+                guesses.appendChild(circle);
+                let clue = document.createElement("div");
+                clue.className = `square clue-${i +1}`;
+                clues.appendChild(clue);
+            }
+        };
+    };
+    
+};
+loadBoard = (event) => {
+    let level = event.target.id;
+    gameLevel = level;
+    buttons.classList.remove("hidden");
+    levels.classList.add("hidden");
+    let makeGame = new gameRows(level);
+    makeGame.createGameBoard();
+    randomizeColors();
+};
 clearing = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 };
 canvasing = (outcome) => {
     clearing();
     let randomX = Math.floor(Math.random() * 100);
-    let randomY = Math.floor(Math.random() * 500 );
+    let randomY = Math.floor(Math.random() * 470 );
     console.log(randomX, randomY);
     ctx.drawImage(outcome, randomX, randomY);
 };
 win = () => {
-    set = setInterval(canvasing, 300, winImg);
+    set = setInterval(canvasing, 200, winImg);
     revealSolution();
     game.classList.add("hidden");
     winlose.classList.remove("hidden");
 };
 lose = () => {
-    set = setInterval(canvasing, 300, loseImg);
+    set = setInterval(canvasing, 200, loseImg);
     revealSolution();
     game.classList.add("hidden");
     winlose.classList.remove("hidden");
@@ -60,7 +104,7 @@ toggleHome = () => {
 };
 canvas.addEventListener("click", toggleHome);
 randomizeColors = () => {
-    for(i = 0; i < 3; i++) {
+    for(i = 0; i < gameLevel; i++) {
         let color = colors[Math.floor(Math.random() * colors.length)];
         while(solution.includes(color)){
             color = colors[Math.floor(Math.random() * colors.length)];
@@ -69,7 +113,6 @@ randomizeColors = () => {
     };
     console.log(solution);
 };
-randomizeColors();
 pickColor = (event) => {
     let color = event.target.id;
     let guess = document.querySelector(`#row-${round} .guess-${guesses.length +1}`);
@@ -78,17 +121,16 @@ pickColor = (event) => {
         guess.classList.add(color);
         guesses.push(color);
     };
-    if (guesses.length === 0){
-        addColor(guess);
-    } else if (guesses.length === 1){
-        addColor(guess);
-    } else if (guesses.length === 2){
+    if (guesses.length < gameLevel){
         addColor(guess);
     };
 };
 undoPick = () => {
     let guess = document.querySelector(`#row-${round} .guess-${guesses.length}`);
-    if (guesses.length === 3){
+    if (guesses.length === 4){
+        guess.classList.remove(`${guesses[3]}`);
+        guess.classList.add("empty");
+    } else if (guesses.length === 3){
         guess.classList.remove(`${guesses[2]}`);
         guess.classList.add("empty");
     } else if (guesses.length === 2){
@@ -107,47 +149,34 @@ white = (clue) => {
     clue.classList.add("white")
 };
 checkGuess = () => {
-    if (guesses.length === 3) {
+    if (guesses.length == gameLevel) {
         let blackSquares = 0;
         let whiteSquares = 0;
-        if (guesses.includes(solution[0])) {
-            if (solution.indexOf(solution[0]) === guesses.indexOf(solution[0])){
-                blackSquares++;
-            } else {
-                whiteSquares++;
-            };
-        }; 
-        if (guesses.includes(solution[1])) {
-            if (solution.indexOf(solution[1]) === guesses.indexOf(solution[1])){
-                blackSquares++;
-            } else {
-                whiteSquares++;
-            };
-        }; 
-        if (guesses.includes(solution[2])) {
-            if (solution.indexOf(solution[2]) === guesses.indexOf(solution[2])){
-                blackSquares++;
-            } else {
-                whiteSquares++;
-            };
-        }; 
-        
-        let clueOne = document.querySelector(`#row-${round} .clue-1`);
-        let clueTwo = document.querySelector(`#row-${round} .clue-2`);
-        let clueThree = document.querySelector(`#row-${round} .clue-3`);
-        const clues = [clueOne, clueTwo, clueThree]
+        for (let i = 0; i < gameLevel; i++){
+            if (guesses.includes(solution[i])) {
+                if (solution.indexOf(solution[i]) === guesses.indexOf(solution[i])){
+                    blackSquares++;
+                } else {
+                    whiteSquares++;
+                };
+            }; 
+        };
+        let clues = [];
+        for (let i = 0; i < gameLevel; i++){
+            let clue = document.querySelector(`#row-${round} .clue-${i+ 1}`)
+            clues.push(clue)
+        }
+        console.log(clues);
         for (i = 0; i < blackSquares; i++) {
             black(clues[i]);
         };
         for (i = blackSquares; i < whiteSquares + blackSquares; i++) {
             white(clues[i]);
         };
-        if (blackSquares === 3) {
+        if (blackSquares == gameLevel) {
             win();
-            // revealSolution();
         } else if (round === 9) {
             lose();
-            // revealSolution();
         } else {
             guesses = [];
             round++;
@@ -170,22 +199,17 @@ oK = (e) => {
     game.classList.remove("hidden");
 };
 resetGame = () => {
+    let gameBoard = document.querySelector(".game-board");
+    let rows = document.querySelectorAll(".row");
+    rows.forEach(child => {
+        gameBoard.removeChild(child);
+    });
     round = 1;
     solution = [];
     guesses = [];
-    circles.forEach(circle => {
-        let attribute = circle.getAttribute("class")
-        circle.classList.add("empty")
-        colors.forEach(color => {
-            if (attribute.includes(`${color}`)) {
-                circle.classList.remove(`${color}`);
-            };
-        })
-    });
-    squares.forEach(square => {
-        square.classList.remove("black");
-        square.classList.remove("white")
-    });
+    gameLevel = 0;
+    buttons.classList.add("hidden");
+    levels.classList.remove("hidden");
     answer.forEach(circle => {
         let attribute = circle.getAttribute("class")
         colors.forEach(color => {
@@ -194,9 +218,11 @@ resetGame = () => {
             };
         });
     });
-    randomizeColors();
 };
 /* Event Listeners */
+choose.forEach(choice => {
+    choice.addEventListener("click", loadBoard)
+});
 options.forEach(option => {
     option.addEventListener("click", pickColor);
 });
