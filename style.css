@@ -67,7 +67,7 @@ p {
     margin-top: 60px;
 }
 .buttons {
-    width: 250px;
+    width: 275px;
     height: 30px;
     /* max-height: 30px; */
     display: grid;
@@ -102,7 +102,7 @@ button {
     background-color: #9ce1ff;
     border-radius: 14px;
     border-style: none;
-    padding: 1px 7px;
+    padding: 1px 10px;
     outline: none;
     font-family: "M PLUS Rounded 1c";
     font-size: 14px;
@@ -110,7 +110,7 @@ button {
 }
 button:hover {
     cursor: pointer;
-    padding: 3px 8px;
+    padding: 3px 13px;
     background-color: white;
     color: black;
 } 
@@ -206,12 +206,29 @@ h3 {
     border-radius: 50%;
     filter: blur(2px); 
 }
-.guess {
+.guess-level-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.guess-level-4 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
 }
-.clues {
+.clues-level-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: #c6c6c6;
+    /* background-color: black; */
+    border-style: solid;
+    border-left: none;
+    border-width: 2px;
+    border-color: #858585;
+    border-radius: 0px 14px 14px 0px;
+}
+.clues-level-4 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;

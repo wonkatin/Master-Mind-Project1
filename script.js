@@ -28,7 +28,6 @@ let squares = document.querySelectorAll(".game-board .square");
 let answer = document.querySelectorAll(".solution .circle");
 let instructBtn = document.querySelector("#instructions");
 let instructions = document.querySelector(".instructions")
-// let message = document.querySelector("#message");
 let winlose = document.querySelector(".winlose");
 let game = document.querySelector(".game");
 let okay = document.querySelectorAll(".ok");
@@ -45,14 +44,16 @@ class gameRows {
     createGameBoard(){
         for(let i = 0; i < this.rows; i++) {
             let row = document.createElement("div");
+            let guessLevel = `guess-level-${this.level}`;
+            let clueLevel = `clues-level-${this.level}`;
             row.id = `row-${i + 1}`;
             row.className = "grid row";
             gameBoard.appendChild(row);
             let guesses = document.createElement("div");
-            guesses.className = "guess";
+            guesses.className = guessLevel;
             row.appendChild(guesses);
             let clues =document.createElement("div");
-            clues.className = "clues";
+            clues.className = clueLevel;
             row.appendChild(clues);
             for (let i = 0; i < this.level; i++){
                 let circle = document.createElement("div");
@@ -82,7 +83,7 @@ canvasing = (outcome) => {
     clearing();
     let randomX = Math.floor(Math.random() * 100);
     let randomY = Math.floor(Math.random() * 470 );
-    console.log(randomX, randomY);
+    // console.log(randomX, randomY);
     ctx.drawImage(outcome, randomX, randomY);
 };
 win = () => {
@@ -166,7 +167,6 @@ checkGuess = () => {
             let clue = document.querySelector(`#row-${round} .clue-${i+ 1}`)
             clues.push(clue)
         }
-        console.log(clues);
         for (i = 0; i < blackSquares; i++) {
             black(clues[i]);
         };
